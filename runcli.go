@@ -7,7 +7,6 @@ import (
 	"strconv"
 
 	"github.com/urfave/cli/v2"
-	"SimpleBS/localcluster"
 )
 
 func runCLI() {
@@ -26,7 +25,7 @@ func runCLI() {
 				Name:  "create",
 				Usage: "Create a volume",
 				Action: func(c *cli.Context) error {
-					v := localcluster.NewVendor(c.String("folder"))
+					v := NewVendor(c.String("folder"))
 					size, _ := strconv.ParseInt(c.Args().Get(1), 10, 64)
 					return v.CreateVolume(c.Args().Get(0), size)
 				},
@@ -35,7 +34,7 @@ func runCLI() {
 				Name:  "info",
 				Usage: "Get volume info",
 				Action: func(c *cli.Context) error {
-					v := localcluster.NewVendor(c.String("folder"))
+					v := NewVendor(c.String("folder"))
 					info, err := v.GetVolumeInfo(c.Args().Get(0))
 					if err != nil {
 						return err
@@ -48,7 +47,7 @@ func runCLI() {
 				Name:  "delete",
 				Usage: "Delete a volume",
 				Action: func(c *cli.Context) error {
-					v := localcluster.NewVendor(c.String("folder"))
+					v := NewVendor(c.String("folder"))
 					return v.DeleteVolume(c.Args().Get(0))
 				},
 			},

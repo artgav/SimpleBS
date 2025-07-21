@@ -1,5 +1,5 @@
 // localcluster/vendor.go - Core Business Logic
-package localcluster
+package main
 
 import (
 	"encoding/json"

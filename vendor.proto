@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package localcluster;
+package main;
 
 service LocalVendor {
   rpc CreateVolume (VolumeRequest) returns (VolumeReply);
