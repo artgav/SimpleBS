@@ -11,7 +11,7 @@ import (
 )
 
 type server struct {
-	pb.UnimplementedLocalVendorServerServer
+	pb.UnimplementedLocalVendorServer
 	vendor *localcluster.Vendor
 }
 
@@ -50,7 +50,7 @@ func runGRPCServer() {
 	}
 	grpcServer := grpc.NewServer()
 	vendor := localcluster.NewVendor("/mnt/localstorage/volumes")
-	pb.RegisterLocalVendorServerServer(grpcServer, &server{vendor: vendor})
+	pb.RegisterLocalVendorServer(grpcServer, &server{vendor: vendor})
 	fmt.Println("gRPC server listening on :50051")
 	grpcServer.Serve(lis)
 }
