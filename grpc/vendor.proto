@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package localcluster;
+
+service LocalVendor {
+  rpc CreateVolume (VolumeRequest) returns (VolumeReply);
+  rpc GetVolumeInfo (VolumeRequest) returns (VolumeInfo);
+  rpc DeleteVolume (VolumeRequest) returns (VolumeReply);
+}
+
+message VolumeRequest {
+  string name = 1;
+  int64 size = 2; // only for CreateVolume
+}
+
+message VolumeReply {
+  string message = 1;
+}
+
+message VolumeInfo {
+  string status = 1;
+  int64 size = 2;
+  string server_ip = 3;
+}
